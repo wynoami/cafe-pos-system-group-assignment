@@ -14,13 +14,19 @@ This assignment has the following requirements:
 
 ### Views
 
-- **Main Menu**: Display options to create an order, add items to an existing order, process payment, and view open orders (no payment type).
+- **Home Menu**: Display buttons to create an order, view order details on an existing active order, and list open orders (no payment type).
 
 - **Creating an Order**: An order requires a server (ensure the service is active based on the hire date/term date). The order date should be the current day/time.
 
-- **Item Addition**: Allow a server to select an open order and then add items to an order based on the `ItemID` and `Quantity`.
+- **Order Details**: Display the selected order with details, including items in order (this list will be empty on creation), the assigned server, order date, and order total, plus buttons to process payment and add items to order
+
+- **Item Addition**: Allow a server (the user) to select an open order and then add items to an order based on the `ItemID` and `Quantity`.
 
 - **Payment Process**: Query the user for the payment type. We do not store payment information; when a payment type is assigned to an order, we consider it closed. (Assume an external system will process payment and that the order system is not connected to it)
+
+- All views except Home should have a Back Button that returns to the previous page
+
+See the included wireframe for suggested layout. Note, the layout is suggested, and includes notes on additional features to consider. These "considerations" are **not required** but encouraged. You are welcome and encouraged to create a more custom and unique set of views, the wireframes only outline the base level functionality and structure required.
 
 ### Application Pages
 
