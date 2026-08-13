@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace FourthWallCafe.LIB.Models;
 
 using System.ComponentModel.DataAnnotations;
@@ -12,6 +14,15 @@ using System.ComponentModel.DataAnnotations;
 
 public class OrderItemModel
 {
+    [Key]
+    public int OrderItemID { get; set; }
 
+    [ForeignKey("CafeOrder")]
+    public int OrderID { get; set; }
+
+    [ForeignKey("ItemPrice")]
+    public int ItemPriceID { get; set; }
+
+    public int Quantity          { get; set; }
+    public decimal ExtendedPrice { get; set; }
 }
-

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace FourthWallCafe.LIB.Models;
 
 using System.ComponentModel.DataAnnotations;
@@ -13,5 +15,16 @@ using System.ComponentModel.DataAnnotations;
 
 public class ItemPriceModel
 {
+    [Key]
+    public int ItemPriceID { get; set; }
 
+    [ForeignKey("Item")]
+    public int ItemID { get; set; }
+
+    [ForeignKey("TimeOfDay")]
+    public int TimeOfDayID { get; set; }
+
+    public decimal Price      { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate   { get; set; }
 }

@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class PaymentTypeModel
 {
-
+    [Key]
+    public int PaymentTypeID      { get; set; }
+    public string PaymentTypeName { get; set; } = null!;
 }
-
-

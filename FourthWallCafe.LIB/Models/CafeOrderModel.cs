@@ -1,6 +1,7 @@
 namespace FourthWallCafe.LIB.Models;
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 //  Field          Type          Null  Key  Default  Extra
 // +--------------+-------------+-----+----+--------+---------------+
@@ -15,5 +16,18 @@ using System.ComponentModel.DataAnnotations;
 
 public class CafeOrderModel
 {
+    [Key]
+    public int OrderID { get; set; }
 
+    [ForeignKey("Server")]
+    public int ServerID { get; set; }
+
+    [ForeignKey("PaymentType")]
+    public int PaymentTypeID { get; set; }
+
+    public DateTime OrderDate { get; set; }
+    public decimal SubTotal   { get; set; }
+    public decimal Tax        { get; set; }
+    public decimal Tip        { get; set; }
+    public decimal AmountDue  { get; set; }
 }

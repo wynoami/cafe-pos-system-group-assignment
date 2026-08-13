@@ -9,9 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class TimeOfDayModel
 {
-
+    [Key]
+    public int TimeOfDayID      { get; set; }
+    public string TimeOfDayName { get; set; } = null!;
 }
-
-
-
-

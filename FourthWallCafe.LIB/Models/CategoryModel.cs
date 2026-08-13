@@ -1,6 +1,7 @@
 namespace FourthWallCafe.LIB.Models;
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 //  Field         Type         Null  Key  Default  Extra
 // +-------------+------------+-----+----+--------+---------------+
@@ -9,5 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class CategoryModel
 {
-
+    [Key]
+    public int CategoryID      { get; set; }
+    public string CategoryName { get; set; } = null!;
 }
