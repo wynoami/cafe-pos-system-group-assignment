@@ -21,4 +21,6 @@ public class Server
     public DateTime  HireDate  { get; set; }
     public DateTime? TermDate  { get; set; }
     public DateTime  DoB       { get; set; }
+
+    public ICollection<CafeOrder?>? Orders { get; set; }
 }

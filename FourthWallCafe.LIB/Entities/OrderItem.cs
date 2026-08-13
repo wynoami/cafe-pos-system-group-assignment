@@ -19,9 +19,11 @@ public class OrderItem
 
     [ForeignKey("CafeOrder")]
     public int OrderID { get; set; }
+    public virtual CafeOrder? Order { get; set; }
 
     [ForeignKey("ItemPrice")]
     public int ItemPriceID { get; set; }
+    public virtual ItemPrice? Price { get; set; }
 
     public int Quantity          { get; set; }
     public decimal ExtendedPrice { get; set; }

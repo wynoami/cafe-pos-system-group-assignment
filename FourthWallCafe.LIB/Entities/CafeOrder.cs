@@ -21,13 +21,17 @@ public class CafeOrder
 
     [ForeignKey("Server")]
     public int ServerID { get; set; }
+    public virtual Server? Server { get; set; }
 
     [ForeignKey("PaymentType")]
     public int PaymentTypeID { get; set; }
+    public virtual PaymentType? PaymentType { get; set; }
 
     public DateTime OrderDate { get; set; }
     public decimal SubTotal   { get; set; }
     public decimal Tax        { get; set; }
     public decimal Tip        { get; set; }
     public decimal AmountDue  { get; set; }
+
+    public ICollection<OrderItem?>? OrderEntries { get; set; }
 }

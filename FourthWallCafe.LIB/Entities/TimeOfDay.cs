@@ -12,4 +12,6 @@ public class TimeOfDay
     [Key]
     public int TimeOfDayID      { get; set; }
     public string TimeOfDayName { get; set; } = null!;
+
+    public ICollection<ItemPrice?>? Prices { get; set; }
 }

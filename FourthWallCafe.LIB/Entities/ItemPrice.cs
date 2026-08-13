@@ -20,11 +20,15 @@ public class ItemPrice
 
     [ForeignKey("Item")]
     public int ItemID { get; set; }
+    public virtual OrderItem? Item { get; set; }
 
     [ForeignKey("TimeOfDay")]
     public int TimeOfDayID { get; set; }
+    public virtual TimeOfDay? TimeOfDay { get; set; }
 
     public decimal Price      { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate   { get; set; }
+
+    public ICollection<OrderItem?>? OrderEntries { get; set; }
 }

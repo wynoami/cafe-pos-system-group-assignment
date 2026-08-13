@@ -12,4 +12,7 @@ public class PaymentType
     [Key]
     public int PaymentTypeID      { get; set; }
     public string PaymentTypeName { get; set; } = null!;
+
+    // the diagram is wrong here and i am right >:[
+    public ICollection<CafeOrder?>? Orders { get; set; }
 }

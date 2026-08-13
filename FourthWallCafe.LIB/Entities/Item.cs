@@ -17,7 +17,10 @@ public class Item
 
     [ForeignKey("Category")]
     public int CategoryID { get; set; }
+    public virtual Category? Category { get; set; }
 
     public string ItemName        { get; set; } = null!;
     public string ItemDescription { get; set; } = null!;
+
+    public ICollection<ItemPrice?>? Prices { get; set; }
 }
