@@ -1,0 +1,26 @@
+@model FourthWallCafe.Web.ViewModels.CreateOrderViewModel
+
+<div class="text-center">
+    <h2>Active Servers</h2>
+    <hr />
+
+    <ul class="list-unstyled">
+        @foreach (var server in Model.ActiveServers)
+        {
+            <li class="mb-3">
+                <span class="fs-4 me-3">&#9679;</span>
+                <span class="fs-4">@server.FirstName @server.LastName</span>
+
+                <!-- This form posts to the Create action and passes the ServerID -->
+                <form asp-controller="Orders" asp-action="Create" method="post" class="ms-3 mb-0">
+                    <input type="hidden" name="serverId" value="@server.ServerId"/>
+                    <button type="submit" class="btn btn-sm btn-outline-dark border border-2">select</button>
+                </form>
+            </li>
+        }
+    </ul>
+
+    <div class="mt-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary border border-dark">Back</a>
+    </div>
+</div>
