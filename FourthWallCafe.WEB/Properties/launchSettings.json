@@ -9,15 +9,14 @@
     }
   },
   "profiles": {
-    "local": {
+    "local-db": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5026",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DEVUSER": "cs_dev",
-        "DEVUSERPW": "73$7D41V3"
+        "LOCALDB_CREDENTIALS": "server=127.0.0.1;uid=cs_dev;pwd=73$7D41V3;database=FourthWallCafe",
       }
     },
     "http": {
