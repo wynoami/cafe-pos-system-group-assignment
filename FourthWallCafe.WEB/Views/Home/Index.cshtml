@@ -1,23 +1,16 @@
 @model FourthWallCafe.Web.ViewModels.HomeViewModel
 
-<div class="text-center">
-    <h1>Home</h1>
+<div class="text-center mt-5">
+    <h1>4th Wall Cafe POS</h1>
 
     <!-- New Order Button -->
-    <div class="mb-4">
-        <a asp-controller="Orders" asp-action="Create" class="btn btn-primary btn-lg border border-dark">Create New Order</a>
+    <div class="mt-5 mb-4">
+        <a asp-controller="Orders" asp-action="Create" class="btn btn-primary btn-lg border border-dark px-5 py-3">Create New Order</a>
     </div>
 
     <!-- Active Orders List -->
-    <h2>Active Orders</h2>
-    <ul class="list-unstyled">
-        @foreach (var order in Model.OpenOrders)
-        {
-            <li class="mb-2">
-                <span class="fs-4 me-3">&#9679;</span> <!-- Bullet point -->
-                <span class="fs-4">Order @order.OrderId</span>
-                <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.OrderId" class="btn btn-sm btn-outline-dark ms-3 border border-2">view</a>
-            </li>
-        }
-    </ul>
+   <div class="mt-5">
+    <h3>Active Orders</h3>
+    <p class="text-muted">No open orders at this time.</p>
+   </div>
 </div>

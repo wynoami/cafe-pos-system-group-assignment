@@ -13,11 +13,13 @@ public class Program
             app.UseExceptionHandler("/Home/Error");
             app.UseHsts();
         }
+        app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+        app.UseAuthorization();
         app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Hame}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
         // app.MapGet("/", () => "Hello World!");
         app.Run();
     }
