@@ -11,6 +11,24 @@
     <!-- Active Orders List -->
    <div class="mt-5">
     <h3>Active Orders</h3>
-    <p class="text-muted">No open orders at this time.</p>
+    <hr class="w-50 mx-auto"/>
+    @* Check if the list is empty *@
+    @if (Model.OpenOrders == null || !Model.OpenOrders.Any())
+    {
+            <p class="text-muted mt-4">No open orders at this time.</p>
+    }
+    else
+    {
+        @* If we have orders, loop through them and create a button for each! *@
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+        @foreach (var order in Model.OpenOrders)
+        {
+            <a asp-controller="Orders" asp-action="Details" asp-route-id="order.OrderId" class="btn btn-outline-dark btn-lg px-4 py-3 fw-bold shadow-sm">
+                Ticket #@order.OrderId
+            </a>
+        }
+        </div>
+    }
+
    </div>
 </div>
