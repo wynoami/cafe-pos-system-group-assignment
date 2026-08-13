@@ -1,4 +1,4 @@
-namespace FourthWallCafe.LIB.Models;
+namespace FourthWallCafe.LIB.Entities;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 //  CategoryID    int(11)      NO    PRI  NULL     auto_increment
 //  CategoryName  varchar(50)  NO         NULL
 
-public class CategoryModel
+public class Category
 {
     [Key]
     public int CategoryID      { get; set; }

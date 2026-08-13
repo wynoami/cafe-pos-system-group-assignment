@@ -1,4 +1,4 @@
-namespace FourthWallCafe.LIB.Models;
+namespace FourthWallCafe.LIB.Entities;
 
 using System.ComponentModel.DataAnnotations;
 
@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 //  TermDate   date         YES        NULL
 //  DoB        date         NO         NULL
 
-public class ServerModel
+public class Server
 {
     [Key]
     public int       ServerID  { get; set; }

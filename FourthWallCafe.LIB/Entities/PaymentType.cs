@@ -1,4 +1,4 @@
-namespace FourthWallCafe.LIB.Models;
+namespace FourthWallCafe.LIB.Entities;
 
 using System.ComponentModel.DataAnnotations;
 
@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 //  PaymentTypeID    int(11)      NO    PRI  NULL     auto_increment
 //  PaymentTypeName  varchar(50)  NO         NULL
 
-public class PaymentTypeModel
+public class PaymentType
 {
     [Key]
     public int PaymentTypeID      { get; set; }

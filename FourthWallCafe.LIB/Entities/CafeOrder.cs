@@ -1,4 +1,4 @@
-namespace FourthWallCafe.LIB.Models;
+namespace FourthWallCafe.LIB.Entities;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,7 +14,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 //  Tip            decimal(6,2)  YES        NULL
 //  AmountDue      decimal(6,2)  YES        NULL
 
-public class CafeOrderModel
+public class CafeOrder
 {
     [Key]
     public int OrderID { get; set; }

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FourthWallCafe.LIB.Models;
+namespace FourthWallCafe.LIB.Entities;
 
 using System.ComponentModel.DataAnnotations;
 
@@ -13,7 +13,7 @@ using System.ComponentModel.DataAnnotations;
 //  StartDate    date          NO         NULL
 //  EndDate      date          YES        NULL
 
-public class ItemPriceModel
+public class ItemPrice
 {
     [Key]
     public int ItemPriceID { get; set; }

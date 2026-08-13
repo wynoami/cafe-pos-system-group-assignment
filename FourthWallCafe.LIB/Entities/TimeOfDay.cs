@@ -1,4 +1,4 @@
-namespace FourthWallCafe.LIB.Models;
+namespace FourthWallCafe.LIB.Entities;
 
 using System.ComponentModel.DataAnnotations;
 
@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 //  TimeOfDayID    int(11)      NO    PRI  NULL     auto_increment
 //  TimeOfDayName  varchar(50)  NO         NULL
 
-public class TimeOfDayModel
+public class TimeOfDay
 {
     [Key]
     public int TimeOfDayID      { get; set; }

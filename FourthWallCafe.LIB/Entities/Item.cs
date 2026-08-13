@@ -1,4 +1,4 @@
-namespace FourthWallCafe.LIB.Models;
+namespace FourthWallCafe.LIB.Entities;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 //  ItemName         varchar(50)   NO         NULL
 //  ItemDescription  varchar(255)  NO         NULL
 
-public class ItemModel
+public class Item
 {
     [Key]
     public int ItemID { get; set; }

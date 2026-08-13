@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FourthWallCafe.LIB.Models;
+namespace FourthWallCafe.LIB.Entities;
 
 using System.ComponentModel.DataAnnotations;
 
@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 //  Quantity       tinyint(4)    NO         NULL
 //  ExtendedPrice  decimal(6,2)  NO         0.00
 
-public class OrderItemModel
+public class OrderItem
 {
     [Key]
     public int OrderItemID { get; set; }
