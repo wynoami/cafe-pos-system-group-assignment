@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Checkout - Order #" + ViewBag.OrderId;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Added a column width so it doesn't stretch too wide -->
+        <div class="col-md-6">
+            
+            <!-- Checkout Card (Now wraps everything) -->
+            <div class="card border-dark shadow-lg">
+                <div class="card-header bg-dark text-center py-4">
+                    <h2 class="mb-0 text-white-50">Order #@ViewBag.OrderId</h2>
+                </div>
+
+                <div class="card-body p-4">
+                    <h4 class="text-center text-muted mb-4">Select Payment Method</h4>
+
+                    <!-- Payment Form -->
+                    <form asp-controller="Orders" asp-action="ProcessPayment" method="post" class="d-grid gap-3">
+                        <input type="hidden" name="orderId" value="@ViewBag.OrderId"/>
+
+                        <!-- Credit / Debit -->
+                        <button type="submit" name="paymentMethod" value="Card" class="btn btn-outline-primary btn-lg py-4 fw-bold fs-4">Credit / Debit</button>
+
+                        <!-- Cash -->
+                        <button type="submit" name="paymentMethod" value="Cash" class="btn btn-outline-success btn-lg py-4 fw-bold fs-4">Cash</button>
+
+                        <!-- Gift Card -->
+                        <button type="submit" name="paymentMethod" value="Gift Card" class="btn btn-outline-warning btn-lg py-4 fw-bold fs-4">Gift Card</button>
+                    </form>
+                </div>
+
+                <div class="card-footer bg-light p-3">
+                    <!-- Back Button -->
+                    <a asp-controller="Orders" asp-action="Details" asp-route-id="@ViewBag.OrderId" class="btn btn-secondary w-100 btn-lg fw-bold">Back to Ticket</a>
+                </div>
+            </div> <!-- /End of Card -->
+            
+        </div>
+    </div>
+</div>
