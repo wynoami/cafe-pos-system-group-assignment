@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FourthWallCafe.LIB\FourthWallCafe.LIB.csproj" />
+    <ProjectReference Include="..\FourthWallCafe.ORM\FourthWallCafe.ORM.csproj" />
+  </ItemGroup>
+
 </Project>
