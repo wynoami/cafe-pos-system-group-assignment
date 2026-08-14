@@ -56,10 +56,17 @@ public class OrderItemAdapter : IRepository<OrderItem>
         return null;
     }
 
-    // include ItemID and Quantity
     public OrderItem? RetrieveSingle(Option Option, int Id)
     {
-        return null;
+        return Option switch {
+            Option.DETAILS =>
+                Context.OrderItem
+                    .Include(I => I.Price)
+                    // .ThenInclude(P => P.Item)
+                    .Where(I => I.OrderItemID == Id)
+                    .FirstOrDefault(),
+            _ => null
+        };
     }
 
     public bool AddEntity(OrderItem Entity)
