@@ -3,70 +3,70 @@ namespace FourthWallCafe.LIB.Utils;
 public class UpdateData
 {
     // GENERIC
-    public const string IDKey   = "id";
-    public const string NameKey = "name";
-    public const string DescKey = "desc";
+    public const string ID   = "id";
+    public const string Name = "name";
+    public const string Desc = "desc";
 
     // IDs
-    public const string OrderIDKey     = "orderid";
-    public const string CategoryIDKey  = "categoryid";
-    public const string ItemIDKey      = "itemid";
-    public const string PriceIDKey     = "priceid";
-    public const string OrderItemIDKey = "orderitemid";
-    public const string PaymentIDKey   = "paymentid";
-    public const string ServerIDKey    = "serverid";
-    public const string TimeOfDayIDKey = "timeofdayid";
+    public const string OrderID     = "orderid";
+    public const string CategoryID  = "categoryid";
+    public const string ItemID      = "itemid";
+    public const string PriceID     = "priceid";
+    public const string OrderItemID = "orderitemid";
+    public const string PaymentID   = "paymentid";
+    public const string ServerID    = "serverid";
+    public const string TimeOfDayID = "timeofdayid";
 
     // CafeOrder
-    public const string OrderDateKey = "orderdate";
-    public const string SubTotalKey  = "subtotal";
-    public const string TaxKey       = "tax";
-    public const string TipKey       = "tip";
-    public const string AmountDueKey = "amountdue";
+    public const string OrderDate = "orderdate";
+    public const string SubTotal  = "subtotal";
+    public const string Tax       = "tax";
+    public const string Tip       = "tip";
+    public const string AmountDue = "amountdue";
 
     // ItemPrice
-    public const string PriceKey     = "price";
-    public const string StartDateKey = "startdate";
-    public const string EndDateKey   = "enddate";
+    public const string Price     = "price";
+    public const string StartDate = "startdate";
+    public const string EndDate   = "enddate";
 
     // OrderItem
-    public const string QuantityKey      = "quantity";
-    public const string ExtendedPriceKey = "extendedprice";
+    public const string Quantity      = "quantity";
+    public const string ExtendedPrice = "extendedprice";
 
     // Server
-    public const string FirstNameKey = "firstname";
-    public const string LastNameKey  = "lastname";
-    public const string HireDateKey  = "hiredate";
-    public const string TermDateKey  = "termdate";
-    public const string DoBKey       = "birth";
+    public const string FirstName = "firstname";
+    public const string LastName  = "lastname";
+    public const string HireDate  = "hiredate";
+    public const string TermDate  = "termdate";
+    public const string DoB       = "birth";
 
     public Dictionary<string, string> Index = new()
     {
-        [IDKey]            = string.Empty,
-        [NameKey]          = string.Empty,
-        [DescKey]          = string.Empty,
-        [OrderIDKey]       = string.Empty,
-        [CategoryIDKey]    = string.Empty,
-        [ItemIDKey]        = string.Empty,
-        [PriceIDKey]       = string.Empty,
-        [OrderItemIDKey]   = string.Empty,
-        [PaymentIDKey]     = string.Empty,
-        [ServerIDKey]      = string.Empty,
-        [TimeOfDayIDKey]   = string.Empty,
-        [OrderDateKey]     = string.Empty,
-        [SubTotalKey]      = string.Empty,
-        [TaxKey]           = string.Empty,
-        [TipKey]           = string.Empty,
-        [AmountDueKey]     = string.Empty,
-        [PriceKey]         = string.Empty,
-        [StartDateKey]     = string.Empty,
-        [EndDateKey]       = string.Empty,
-        [QuantityKey]      = string.Empty,
-        [ExtendedPriceKey] = string.Empty,
-        [FirstNameKey]     = string.Empty,
-        [LastNameKey]      = string.Empty,
-        [HireDateKey]      = string.Empty,
-        [TermDateKey]      = string.Empty,
-        [DoBKey]           = string.Empty,
+        [ID]            = string.Empty,
+        [Name]          = string.Empty,
+        [Desc]          = string.Empty,
+        [OrderID]       = string.Empty,
+        [CategoryID]    = string.Empty,
+        [ItemID]        = string.Empty,
+        [PriceID]       = string.Empty,
+        [OrderItemID]   = string.Empty,
+        [PaymentID]     = string.Empty,
+        [ServerID]      = string.Empty,
+        [TimeOfDayID]   = string.Empty,
+        [OrderDate]     = string.Empty,
+        [SubTotal]      = string.Empty,
+        [Tax]           = string.Empty,
+        [Tip]           = string.Empty,
+        [AmountDue]     = string.Empty,
+        [Price]         = string.Empty,
+        [StartDate]     = string.Empty,
+        [EndDate]       = string.Empty,
+        [Quantity]      = string.Empty,
+        [ExtendedPrice] = string.Empty,
+        [FirstName]     = string.Empty,
+        [LastName]      = string.Empty,
+        [HireDate]      = string.Empty,
+        [TermDate]      = string.Empty,
+        [DoB]           = string.Empty,
     };
 }

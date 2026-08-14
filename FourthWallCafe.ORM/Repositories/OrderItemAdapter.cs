@@ -42,7 +42,7 @@ public class OrderItemAdapter : IRepository<OrderItem>
         return false;
     }
 
-    public bool IfStatus(Option Option, int Id)
+    public bool Status(Option Option, int Id)
     {
         return false;
     }

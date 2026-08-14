@@ -22,5 +22,5 @@ public interface IRepository<T>
     bool AddEntity(T Entity);
     bool UpdateEntity(T Entity);
     bool ValidateEntity(Option Option, T Entity);
-    bool IfStatus(Option Option, int Id);
+    bool Status(Option Option, int Id);
 }

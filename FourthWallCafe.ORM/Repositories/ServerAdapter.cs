@@ -42,7 +42,7 @@ public class ServerAdapter : IRepository<Server>
         return false;
     }
 
-    public bool IfStatus(Option Option, int Id)
+    public bool Status(Option Option, int Id)
     {
         return false;
     }
