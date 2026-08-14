@@ -12,9 +12,43 @@ public class OrderItemAdapter : IRepository<OrderItem>
     public OrderItemAdapter() => Context = new ();
     public OrderItemAdapter(SessionContext C) => Context = C;
 
-    public OrderItem? CreateEntity(UpdateData Details)
+    private bool IsOrderOpen(int Id)
     {
-        return null;
+        return
+            Context.CafeOrder
+                .Where(O => O.OrderID == Id)
+                .Where(O => O.PaymentTypeID == null)
+                .FirstOrDefault() != null;
+    }
+
+    public OrderItem? CreateEntity(UpdateData Values)
+    {
+        Dictionary<string, string> _Values = Values.Index;
+
+        string _OrderIdStr  = _Values[UpdateData.OrderID];
+        string _PriceIdStr  = _Values[UpdateData.PriceID];
+        string _QuantStr    = _Values[UpdateData.Quantity];
+        string _ExtPriceStr = _Values[UpdateData.ExtendedPrice];
+
+        // defaults not assumed
+        if (!int.TryParse(_OrderIdStr, out int _OrderId)  ||
+            !int.TryParse(_PriceIdStr, out int _PriceId)  ||
+            !int.TryParse(_QuantStr,   out int _Quantity))
+            return null;
+
+        // handle default assignment
+        decimal _ExtPrice = decimal.TryParse(_ExtPriceStr, out decimal E) ? E : 0.0M;
+
+        if (!IsOrderOpen(_OrderId))
+            return null;
+
+        return new OrderItem()
+        {
+            OrderID       = _OrderId,
+            ItemPriceID   = _PriceId,
+            Quantity      = _Quantity,
+            ExtendedPrice = _ExtPrice
+        };
     }
 
     public OrderItem? UpdateValues(Option Option, int Id, UpdateData Values)
@@ -22,6 +56,7 @@ public class OrderItemAdapter : IRepository<OrderItem>
         return null;
     }
 
+    // include ItemID and Quantity
     public OrderItem? RetrieveSingle(Option Option, int Id)
     {
         return null;

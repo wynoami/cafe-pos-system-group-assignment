@@ -2,13 +2,12 @@ namespace FourthWallCafe.LIB.Interfaces;
 
 using FourthWallCafe.LIB.Utils;
 
-//////// NEEDED FUNCTIONALITY ////////
-//
-// create (add) OrderItems for an open CafeOrder
-//     - include ItemID and Quantity
-
 public interface IRepository<T>
 {
+    // 'int Id' arguments are meant for recorded data
+    // 'T Entity' arguments will typically refer to transient data
+    // these are just guidelines
+
     T? CreateEntity(UpdateData Values);
     T? UpdateValues(Option Option, int Id, UpdateData Values);
     T? RetrieveSingle(Option Option, int Id);

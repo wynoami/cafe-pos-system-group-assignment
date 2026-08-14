@@ -12,6 +12,15 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
     public CafeOrderAdapter() => Context = new ();
     public CafeOrderAdapter(SessionContext C) => Context = C;
 
+    private bool IsServerActive(int? Id)
+    {
+        return
+            Context.Server
+                .Where(S => S.ServerID == Id)
+                .Where(S => S.TermDate == null)
+                .FirstOrDefault() != null;
+    }
+
     public CafeOrder? CreateEntity(UpdateData Values)
     {
         Dictionary<string, string> _Values = Values.Index;
@@ -22,11 +31,11 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
         decimal? _Tax       = _SubTotal * Defaults.TaxRate;
         decimal? _AmountDue = _SubTotal + _Tax + _Tip;
 
-        // check server is actually active
-        if (!Status(Option.SERVER, _ServerId ?? -1))
+        if (!IsServerActive(_ServerId))
             return null;
 
-        CafeOrder? NewEntity = new(){
+        return new CafeOrder()
+        {
             ServerID      = _ServerId,
             PaymentTypeID =  null,
             OrderDate     =  DateTime.Now,
@@ -35,8 +44,6 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
             Tip           = _Tip,
             AmountDue     = _AmountDue,
         };
-
-        return NewEntity;
     }
 
     public CafeOrder? UpdateValues(Option Option, int Id, UpdateData Values)
@@ -100,12 +107,6 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
     {
         return Option switch
         {
-            Option.SERVER =>
-                null != Context.Server
-                    .Where(S => S.ServerID == Id)
-                    .Where(S => S.TermDate == null)
-                    .FirstOrDefault(),
-
             _ => false,
         };
     }
@@ -119,5 +120,4 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
             _ => [null],
         };
     }
-
 }
