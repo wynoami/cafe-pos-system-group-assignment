@@ -12,7 +12,7 @@ public class ItemAdapter : IRepository<Item>
     public ItemAdapter() => Context = new ();
     public ItemAdapter(SessionContext C) => Context = C;
 
-    public Item? CreateItem(UpdateData Details)
+    public Item? CreateEntity(UpdateData Details)
     {
         return null;
     }
@@ -27,12 +27,17 @@ public class ItemAdapter : IRepository<Item>
         return null;
     }
 
-    public bool AddItem(Item Item)
+    public bool AddEntity(Item Entity)
     {
         return false;
     }
 
-    public bool UpdateItem(Item Item)
+    public bool UpdateEntity(Item Entity)
+    {
+        return false;
+    }
+
+    public bool ValidateEntity(Option Option, Item Entity)
     {
         return false;
     }

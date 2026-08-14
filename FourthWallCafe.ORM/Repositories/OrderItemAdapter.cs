@@ -12,7 +12,7 @@ public class OrderItemAdapter : IRepository<OrderItem>
     public OrderItemAdapter() => Context = new ();
     public OrderItemAdapter(SessionContext C) => Context = C;
 
-    public OrderItem? CreateItem(UpdateData Details)
+    public OrderItem? CreateEntity(UpdateData Details)
     {
         return null;
     }
@@ -27,12 +27,17 @@ public class OrderItemAdapter : IRepository<OrderItem>
         return null;
     }
 
-    public bool AddItem(OrderItem Item)
+    public bool AddEntity(OrderItem Entity)
     {
         return false;
     }
 
-    public bool UpdateItem(OrderItem Item)
+    public bool UpdateEntity(OrderItem Entity)
+    {
+        return false;
+    }
+
+    public bool ValidateEntity(Option Option, OrderItem Entity)
     {
         return false;
     }

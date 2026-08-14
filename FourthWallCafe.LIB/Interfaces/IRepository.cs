@@ -14,13 +14,13 @@ using FourthWallCafe.LIB.Utils;
 
 public interface IRepository<T>
 {
-    T? CreateItem(UpdateData Values);
+    T? CreateEntity(UpdateData Values);
     T? UpdateValues(Option Option, int Id, UpdateData Values);
     T? RetrieveSingle(Option Option, int Id);
     ICollection<T?>? RetrieveSet(Option Option, string Search);
 
-    bool AddItem(T Item);
-    bool UpdateItem(T Item);
-    bool ValidateItem(Option Option, T Item);
+    bool AddEntity(T Entity);
+    bool UpdateEntity(T Entity);
+    bool ValidateEntity(Option Option, T Entity);
     bool IfStatus(Option Option, int Id);
 }

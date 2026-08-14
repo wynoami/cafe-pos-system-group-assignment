@@ -12,7 +12,7 @@ public class ServerAdapter : IRepository<Server>
     public ServerAdapter() => Context = new ();
     public ServerAdapter(SessionContext C) => Context = C;
 
-    public Server? CreateItem(UpdateData Details)
+    public Server? CreateEntity(UpdateData Details)
     {
         return null;
     }
@@ -27,12 +27,17 @@ public class ServerAdapter : IRepository<Server>
         return null;
     }
 
-    public bool AddItem(Server Item)
+    public bool AddEntity(Server Entity)
     {
         return false;
     }
 
-    public bool UpdateItem(Server Item)
+    public bool UpdateEntity(Server Entity)
+    {
+        return false;
+    }
+
+    public bool ValidateEntity(Option Option, Server Entity)
     {
         return false;
     }

@@ -12,33 +12,58 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
     public CafeOrderAdapter() => Context = new ();
     public CafeOrderAdapter(SessionContext C) => Context = C;
 
-    public CafeOrder? CreateItem(UpdateData Values)
+    public CafeOrder? CreateEntity(UpdateData Values)
     {
-        return null;
+        Dictionary<string, string> _Values = Values.Index;
+        int? _ServerId = int.TryParse(_Values[UpdateData.ServerIDKey], out int n) ? n : null;
+
+        // if
+        // (  !int.TryParse(_Values[UpdateData.ServerIDKey],       out int _ServerId)
+        // || !decimal.TryParse(_Values[UpdateData.ServerIDKey],   out decimal _SubTotal)
+        // || !decimal.TryParse(_Values[UpdateData.TaxKey],        out decimal _Tax)
+        // || !decimal.TryParse(_Values[UpdateData.TipKey],        out decimal _Tip))
+        //     return null;
+
+        CafeOrder? NewEntity = new(){
+            ServerID  = _ServerId,
+            OrderDate =  DateTime.Now,
+            // SubTotal  = _SubTotal,
+            // Tax       = _Tax,
+            // Tip       = _Tip,
+        };
+
+        return NewEntity;
     }
 
     public CafeOrder? UpdateValues(Option Option, int Id, UpdateData Values)
     {
-        CafeOrder? TargetItem = Context.CafeOrder
+        Dictionary<string, string> _Values = Values.Index;
+        CafeOrder? TargetEntity = Context.CafeOrder
             .Where(O => O.OrderID == Id)
             .FirstOrDefault();
+
+        if (TargetEntity == null)
+            return null;
 
         switch (Option)
         {
             case Option.ClOSE :
-                // TargetItem.PaymentTypeID = Values[0];
+            case Option.PAYMENT :
+                TargetEntity.PaymentTypeID = int.Parse(_Values[UpdateData.PaymentIDKey]);
                 break;
+            case Option.NONE :
             default :
                 break;
         };
 
-        return TargetItem;
+        Context.SaveChanges();
+        return TargetEntity;
     }
 
     public CafeOrder? RetrieveSingle(Option Option, int Id)
     {
         return Option switch {
-            Option.NONE => Context.CafeOrder
+            Option.SINGLE => Context.CafeOrder
                 .Where(O => O.OrderID == Id)
                 .FirstOrDefault(),
 
@@ -52,12 +77,17 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
         };
     }
 
-    public bool AddItem(CafeOrder Item)
+    public bool AddEntity(CafeOrder Entity)
     {
         return false;
     }
 
-    public bool UpdateItem(CafeOrder Item)
+    public bool UpdateEntity(CafeOrder Entity)
+    {
+        return false;
+    }
+
+    public bool ValidateEntity(Option Option, CafeOrder Entity)
     {
         return false;
     }

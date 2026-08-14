@@ -12,7 +12,7 @@ public class PaymentTypeAdapter : IRepository<PaymentType>
     public PaymentTypeAdapter() => Context = new ();
     public PaymentTypeAdapter(SessionContext C) => Context = C;
 
-    public PaymentType? CreateItem(UpdateData Details)
+    public PaymentType? CreateEntity(UpdateData Details)
     {
         return null;
     }
@@ -27,12 +27,17 @@ public class PaymentTypeAdapter : IRepository<PaymentType>
         return null;
     }
 
-    public bool AddItem(PaymentType Item)
+    public bool AddEntity(PaymentType Entity)
     {
         return false;
     }
 
-    public bool UpdateItem(PaymentType Item)
+    public bool UpdateEntity(PaymentType Entity)
+    {
+        return false;
+    }
+
+    public bool ValidateEntity(Option Option, PaymentType Entity)
     {
         return false;
     }
