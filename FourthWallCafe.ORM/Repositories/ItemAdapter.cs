@@ -1,8 +1,9 @@
 namespace FourthWallCafe.ORM.Repositories;
 
+using Microsoft.EntityFrameworkCore;
 using FourthWallCafe.LIB.Interfaces;
 using FourthWallCafe.LIB.Entities;
-using FourthWallCafe.LIB.Enums;
+using FourthWallCafe.LIB.Utils;
 
 public class ItemAdapter : IRepository<Item>
 {
@@ -11,12 +12,12 @@ public class ItemAdapter : IRepository<Item>
     public ItemAdapter() => Context = new ();
     public ItemAdapter(SessionContext C) => Context = C;
 
-    public Item? CreateItem(string[] Details)
+    public Item? CreateItem(UpdateData Details)
     {
         return null;
     }
 
-    public Item? UpdateValues(Option Option, int Id, string[] Values)
+    public Item? UpdateValues(Option Option, int Id, UpdateData Values)
     {
         return null;
     }
@@ -43,7 +44,9 @@ public class ItemAdapter : IRepository<Item>
 
     public ICollection<Item?>? RetrieveSet(Option Option, string Search)
     {
-        return [null];
+        return Option switch {
+            Option.ALL => [.. Context.Item],
+            _ => [null]
+        };
     }
-
 }

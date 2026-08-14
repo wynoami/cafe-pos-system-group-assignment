@@ -1,8 +1,9 @@
 namespace FourthWallCafe.ORM.Repositories;
 
+using Microsoft.EntityFrameworkCore;
 using FourthWallCafe.LIB.Interfaces;
 using FourthWallCafe.LIB.Entities;
-using FourthWallCafe.LIB.Enums;
+using FourthWallCafe.LIB.Utils;
 
 public class PaymentTypeAdapter : IRepository<PaymentType>
 {
@@ -11,12 +12,12 @@ public class PaymentTypeAdapter : IRepository<PaymentType>
     public PaymentTypeAdapter() => Context = new ();
     public PaymentTypeAdapter(SessionContext C) => Context = C;
 
-    public PaymentType? CreateItem(string[] Details)
+    public PaymentType? CreateItem(UpdateData Details)
     {
         return null;
     }
 
-    public PaymentType? UpdateValues(Option Option, int Id, string[] Values)
+    public PaymentType? UpdateValues(Option Option, int Id, UpdateData Values)
     {
         return null;
     }
@@ -43,7 +44,11 @@ public class PaymentTypeAdapter : IRepository<PaymentType>
 
     public ICollection<PaymentType?>? RetrieveSet(Option Option, string Search)
     {
-        return [null];
+        return Option switch
+        {
+            Option.ALL => [.. Context.PaymentType],
+            _ => [ null ]
+        };
     }
 
 }

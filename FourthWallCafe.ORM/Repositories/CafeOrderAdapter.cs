@@ -1,8 +1,9 @@
 namespace FourthWallCafe.ORM.Repositories;
 
+using Microsoft.EntityFrameworkCore;
 using FourthWallCafe.LIB.Interfaces;
 using FourthWallCafe.LIB.Entities;
-using FourthWallCafe.LIB.Enums;
+using FourthWallCafe.LIB.Utils;
 
 public class CafeOrderAdapter : IRepository<CafeOrder>
 {
@@ -11,19 +12,44 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
     public CafeOrderAdapter() => Context = new ();
     public CafeOrderAdapter(SessionContext C) => Context = C;
 
-    public CafeOrder? CreateItem(string[] Details)
+    public CafeOrder? CreateItem(UpdateData Values)
     {
         return null;
     }
 
-    public CafeOrder? UpdateValues(Option Option, int Id, string[] Values)
+    public CafeOrder? UpdateValues(Option Option, int Id, UpdateData Values)
     {
-        return null;
+        CafeOrder? TargetItem = Context.CafeOrder
+            .Where(O => O.OrderID == Id)
+            .FirstOrDefault();
+
+        switch (Option)
+        {
+            case Option.ClOSE :
+                // TargetItem.PaymentTypeID = Values[0];
+                break;
+            default :
+                break;
+        };
+
+        return TargetItem;
     }
 
     public CafeOrder? RetrieveSingle(Option Option, int Id)
     {
-        return null;
+        return Option switch {
+            Option.NONE => Context.CafeOrder
+                .Where(O => O.OrderID == Id)
+                .FirstOrDefault(),
+
+            Option.DETAILS => Context.CafeOrder
+                .Where(O => O.OrderID == Id)
+                .Include(O => O.Server)
+                .Include(O => O.OrderEntries)
+                .FirstOrDefault(),
+
+            _ => null
+        };
     }
 
     public bool AddItem(CafeOrder Item)
@@ -43,7 +69,12 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
 
     public ICollection<CafeOrder?>? RetrieveSet(Option Option, string Search)
     {
-        return [null];
+        return Option switch
+        {
+            Option.ALL  => [.. Context.CafeOrder],
+            Option.OPEN => [.. Context.CafeOrder.Where(O => O.PaymentType == null)],
+            _ => [null],
+        };
     }
 
 }

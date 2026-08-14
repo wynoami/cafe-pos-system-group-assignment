@@ -1,33 +1,23 @@
 namespace FourthWallCafe.LIB.Interfaces;
 
-using FourthWallCafe.LIB.Enums;
+using FourthWallCafe.LIB.Utils;
 
 //////// NEEDED FUNCTIONALITY ////////
 //
-// retrieve active Servers
-//
-// retrieve all open CafeOrders
-//
-// retrieve details for a CafeOrder
-//     - include assigned Server
-//     - include OrderItem's
-//     - display OrderDate, SubTotal
+// update payment for an order
 //
 // create a CafeOrder for an active Server
 //     - use the current DateTime
 //
-// retrieve all Items
-// retrieve all OrderItems/Items? associated with an Order
+// retrieve all Items? associated with an Order
+//
 // create (add) OrderItems for an open CafeOrder
 //     - include ItemID and Quantity
-//
-// retrieve available PaymentTypes
-// update payment
 
 public interface IRepository<T>
 {
-    T? CreateItem(string[] Details);
-    T? UpdateValues(Option Option, int Id, string[] Values);
+    T? CreateItem(UpdateData Values);
+    T? UpdateValues(Option Option, int Id, UpdateData Values);
     T? RetrieveSingle(Option Option, int Id);
 
     bool AddItem(T Item);

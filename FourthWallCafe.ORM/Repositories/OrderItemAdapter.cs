@@ -1,8 +1,9 @@
 namespace FourthWallCafe.ORM.Repositories;
 
+using Microsoft.EntityFrameworkCore;
 using FourthWallCafe.LIB.Interfaces;
 using FourthWallCafe.LIB.Entities;
-using FourthWallCafe.LIB.Enums;
+using FourthWallCafe.LIB.Utils;
 
 public class OrderItemAdapter : IRepository<OrderItem>
 {
@@ -11,12 +12,12 @@ public class OrderItemAdapter : IRepository<OrderItem>
     public OrderItemAdapter() => Context = new ();
     public OrderItemAdapter(SessionContext C) => Context = C;
 
-    public OrderItem? CreateItem(string[] Details)
+    public OrderItem? CreateItem(UpdateData Details)
     {
         return null;
     }
 
-    public OrderItem? UpdateValues(Option Option, int Id, string[] Values)
+    public OrderItem? UpdateValues(Option Option, int Id, UpdateData Values)
     {
         return null;
     }
@@ -43,7 +44,18 @@ public class OrderItemAdapter : IRepository<OrderItem>
 
     public ICollection<OrderItem?>? RetrieveSet(Option Option, string Search)
     {
-        return [null];
+        return Option switch {
+            Option.ALL =>
+                [.. Context.OrderItem],
+
+            Option.ORDER =>
+                [..
+                Context.OrderItem
+                    .Where(I => I.OrderID.ToString() == Search)
+                ],
+
+            _ => [null],
+        };
     }
 
 }
