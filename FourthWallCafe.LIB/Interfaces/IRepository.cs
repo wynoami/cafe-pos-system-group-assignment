@@ -4,11 +4,6 @@ using FourthWallCafe.LIB.Utils;
 
 //////// NEEDED FUNCTIONALITY ////////
 //
-// create a CafeOrder for an active Server
-//     - use the current DateTime
-//
-// retrieve all Items? associated with an Order
-//
 // create (add) OrderItems for an open CafeOrder
 //     - include ItemID and Quantity
 

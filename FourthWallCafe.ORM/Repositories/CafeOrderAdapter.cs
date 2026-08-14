@@ -15,21 +15,25 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
     public CafeOrder? CreateEntity(UpdateData Values)
     {
         Dictionary<string, string> _Values = Values.Index;
-        int? _ServerId = int.TryParse(_Values[UpdateData.ServerIDKey], out int n) ? n : null;
 
-        // if
-        // (  !int.TryParse(_Values[UpdateData.ServerIDKey],       out int _ServerId)
-        // || !decimal.TryParse(_Values[UpdateData.ServerIDKey],   out decimal _SubTotal)
-        // || !decimal.TryParse(_Values[UpdateData.TaxKey],        out decimal _Tax)
-        // || !decimal.TryParse(_Values[UpdateData.TipKey],        out decimal _Tip))
-        //     return null;
+        int?     _ServerId  = _Values[UpdateData.ServerID].DeriveInt();
+        decimal? _SubTotal  = _Values[UpdateData.SubTotal].DeriveDecimal() ?? 0;
+        decimal? _Tip       = _Values[UpdateData.Tip].DeriveDecimal()      ?? 0;
+        decimal? _Tax       = _SubTotal * Defaults.TaxRate;
+        decimal? _AmountDue = _SubTotal + _Tax + _Tip;
+
+        // check server is actually active
+        if (!Status(Option.SERVER, _ServerId ?? -1))
+            return null;
 
         CafeOrder? NewEntity = new(){
-            ServerID  = _ServerId,
-            OrderDate =  DateTime.Now,
-            // SubTotal  = _SubTotal,
-            // Tax       = _Tax,
-            // Tip       = _Tip,
+            ServerID      = _ServerId,
+            PaymentTypeID =  null,
+            OrderDate     =  DateTime.Now,
+            SubTotal      = _SubTotal,
+            Tax           = _Tax,
+            Tip           = _Tip,
+            AmountDue     = _AmountDue,
         };
 
         return NewEntity;
@@ -49,7 +53,7 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
         {
             case Option.ClOSE :
             case Option.PAYMENT :
-                TargetEntity.PaymentTypeID = int.Parse(_Values[UpdateData.PaymentIDKey]);
+                TargetEntity.PaymentTypeID = int.Parse(_Values[UpdateData.PaymentID]);
                 break;
             case Option.NONE :
             default :
@@ -92,9 +96,18 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
         return false;
     }
 
-    public bool IfStatus(Option Option, int Id)
+    public bool Status(Option Option, int Id)
     {
-        return false;
+        return Option switch
+        {
+            Option.SERVER =>
+                null != Context.Server
+                    .Where(S => S.ServerID == Id)
+                    .Where(S => S.TermDate == null)
+                    .FirstOrDefault(),
+
+            _ => false,
+        };
     }
 
     public ICollection<CafeOrder?>? RetrieveSet(Option Option, string Search)
