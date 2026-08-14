@@ -90,7 +90,15 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
 
     public bool AddEntity(CafeOrder Entity)
     {
-        return false;
+        try {
+            Context.CafeOrder.Add(Entity);
+            Context.SaveChanges();
+            return true;
+        } catch (Exception Ex) {
+            Console.WriteLine(Ex.Message);
+            // Console.WriteLine(Ex.StackTrace);
+            return false;
+        }
     }
 
     public bool UpdateEntity(CafeOrder Entity)
