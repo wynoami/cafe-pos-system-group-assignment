@@ -4,6 +4,7 @@ public enum Option
 {
     // standard
     NONE,
+    SINGLE,
     ALL,
     ACTIVE,     // server
     OPEN,       // order
