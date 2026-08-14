@@ -1,0 +1,12 @@
+namespace FourthWallCafe.LIB.Models;
+
+public class ItemPriceModel
+{
+
+    public int      ItemPriceID { get; set; }
+    public int      ItemID      { get; set; }
+    public int      TimeOfDayID { get; set; }
+    public decimal  Price       { get; set; }
+    public DateTime StartDate   { get; set; }
+    public DateTime EndDate     { get; set; }
+}
