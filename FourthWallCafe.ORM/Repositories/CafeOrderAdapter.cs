@@ -6,6 +6,11 @@ using FourthWallCafe.LIB.Enums;
 
 public class CafeOrderAdapter : IRepository<CafeOrder>
 {
+    private readonly SessionContext Context;
+
+    public CafeOrderAdapter() => Context = new ();
+    public CafeOrderAdapter(SessionContext C) => Context = C;
+
     public CafeOrder? CreateItem(string[] Details)
     {
         return null;

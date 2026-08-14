@@ -6,6 +6,11 @@ using FourthWallCafe.LIB.Enums;
 
 public class PaymentTypeAdapter : IRepository<PaymentType>
 {
+    private readonly SessionContext Context;
+
+    public PaymentTypeAdapter() => Context = new ();
+    public PaymentTypeAdapter(SessionContext C) => Context = C;
+
     public PaymentType? CreateItem(string[] Details)
     {
         return null;

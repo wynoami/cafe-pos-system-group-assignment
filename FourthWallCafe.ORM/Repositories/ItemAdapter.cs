@@ -6,6 +6,11 @@ using FourthWallCafe.LIB.Enums;
 
 public class ItemAdapter : IRepository<Item>
 {
+    private readonly SessionContext Context;
+
+    public ItemAdapter() => Context = new ();
+    public ItemAdapter(SessionContext C) => Context = C;
+
     public Item? CreateItem(string[] Details)
     {
         return null;
