@@ -1,0 +1,22 @@
+namespace FourthWallCafe.LIB.Utils;
+
+public enum Option
+{
+    // standard
+    NONE,
+    ALL,
+    ACTIVE,     // server
+    OPEN,       // order
+    ClOSE,
+    DETAILS,
+    AVAILABLE,  // Items
+
+    // by entity
+    ORDER,
+    CATEGORY,
+    ITEM,
+    PRICE,
+    PAYMENT,
+    SERVER,
+    TIME,
+}
