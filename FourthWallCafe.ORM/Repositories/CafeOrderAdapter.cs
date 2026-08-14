@@ -90,6 +90,12 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
 
     public bool AddEntity(CafeOrder Entity)
     {
+        if (RetrieveSingle(Option.SINGLE, Entity.OrderID)!= null)
+        {
+            Console.WriteLine("item does already exist");
+            return false;
+        }
+
         try {
             Context.CafeOrder.Add(Entity);
             Context.SaveChanges();
@@ -103,7 +109,21 @@ public class CafeOrderAdapter : IRepository<CafeOrder>
 
     public bool UpdateEntity(CafeOrder Entity)
     {
-        return false;
+        if (RetrieveSingle(Option.SINGLE, Entity.OrderID)== null)
+        {
+            Console.WriteLine("item does not exist");
+            return false;
+        }
+
+        try {
+            Context.CafeOrder.Update(Entity);
+            Context.SaveChanges();
+            return true;
+        } catch (Exception Ex) {
+            Console.WriteLine(Ex.Message);
+            // Console.WriteLine(Ex.StackTrace);
+            return false;
+        }
     }
 
     public bool ValidateEntity(Option Option, CafeOrder Entity)
